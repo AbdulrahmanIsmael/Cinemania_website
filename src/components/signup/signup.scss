@@ -1,0 +1,67 @@
+.main__content__signup {
+  position: relative;
+  background: url(../../assets/images/intro-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 85vh;
+  isolation: isolate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+  }
+
+  &_form {
+    background: linear-gradient(180deg, #202020 40%, #ffd100 60%);
+    width: 50vw;
+    padding: 2em;
+    border-radius: 0.9em;
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4em;
+      legend {
+        color: #ffd100;
+        font-family: 'Roboto Slab', serif;
+        font-size: 4rem;
+      }
+
+      div {
+        width: 70%;
+        input {
+          color: #202020;
+          font-family: 'Roboto Slab', serif;
+          width: 100%;
+          padding: 0.5em 0.2em;
+          font-size: 1.7rem;
+          border-radius: 0.2em;
+          border: 0;
+        }
+      }
+
+      button {
+        font-family: 'Roboto Slab', serif;
+        transition: 0.3s ease;
+        background-color: transparent;
+        border: 1px solid #202020;
+        color: #202020;
+        padding: 0.4em 0.5em;
+        font-size: 2rem;
+        border-radius: 0.4em;
+        margin-top: 1.5em;
+        &:hover {
+          background-color: #202020;
+          color: #ffd100;
+        }
+      }
+    }
+  }
+}

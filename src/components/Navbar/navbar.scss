@@ -1,0 +1,79 @@
+.header__navbar {
+  min-height: 15vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url(../../assets/images/nav-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  isolation: isolate;
+  padding: 0.6em 8em;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.64);
+    inset: 0;
+    z-index: -1;
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    h1 {
+      font-family: 'Roboto Slab', serif;
+      color: #ffee32;
+      font-size: 4rem;
+      font-weight: 800;
+      text-shadow: 0 0 30px #ffee32;
+      span {
+        img {
+          width: 3vw;
+          transform: rotate(10deg) translateX(10%);
+        }
+      }
+    }
+  }
+
+  &__navList {
+    display: flex;
+    align-items: center;
+    gap: 5em;
+    &__navItem {
+      a {
+        transition: all 0.25s linear;
+        font-family: 'Roboto Slab', serif;
+        padding: 0.3em 1.5em;
+        font-size: 2.3rem;
+        border-radius: 10px;
+        border: 0;
+
+        &#signUp {
+          background-color: rgba(32, 32, 32, 0.6);
+          color: #ffee32;
+          border: 1px solid #ffee32;
+          font-weight: 700;
+
+          &:active {
+            background-color: #ffee32;
+            color: #202020;
+          }
+        }
+
+        &#signIn {
+          background-color: #ffee32;
+          color: #202020;
+          border: 1px solid #ffee32;
+
+          &:active {
+            background-color: rgba(32, 32, 32, 0.6);
+            color: #ffee32;
+          }
+        }
+      }
+    }
+  }
+}
