@@ -28,6 +28,10 @@
     @media (width <= 550px) {
       font-size: 5.5rem;
     }
+
+    @media (width <= 425px) {
+      font-size: 4rem;
+    }
   }
 
   p {
@@ -79,7 +83,7 @@
       border-bottom-right-radius: inherit;
     }
 
-    &:hover {
+    &:is(:hover, :active) {
       color: #ffd100;
 
       &::before {

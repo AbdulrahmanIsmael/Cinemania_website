@@ -1,9 +1,24 @@
 .main__content__home {
   &__navLinks {
+    background-color: #ffd100;
+    padding: 1em 0;
     ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5.5em;
+
       li {
         a {
+          transition: 0.25s ease-in;
+          font-family: 'Roboto Slab', serif;
+          font-size: 2rem;
           &.active {
+            background-color: #202020;
+            color: #ffd100;
+            font-size: 1.7rem;
+            font-weight: 600;
+            padding: 0.8em 1.5em;
           }
         }
       }

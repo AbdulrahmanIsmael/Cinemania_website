@@ -11,6 +11,10 @@
   isolation: isolate;
   padding: 0.6em 8em;
 
+  @media (width <= 425px) {
+    padding: 0.6em 2em;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -23,16 +27,22 @@
     display: flex;
     align-items: center;
 
-    h1 {
-      font-family: 'Roboto Slab', serif;
-      color: #ffee32;
-      font-size: 4rem;
-      font-weight: 800;
-      text-shadow: 0 0 30px #ffee32;
-      span {
-        img {
-          width: 3vw;
-          transform: rotate(10deg) translateX(10%);
+    a {
+      h1 {
+        font-family: 'Roboto Slab', serif;
+        color: #ffee32;
+        font-size: 4rem;
+        font-weight: 800;
+        text-shadow: 0 0 30px #ffee32;
+        @media (width <= 425px) {
+          font-size: 3.5rem;
+        }
+
+        span {
+          img {
+            width: 3vw;
+            transform: rotate(10deg) translateX(10%);
+          }
         }
       }
     }
@@ -53,6 +63,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media (width <= 768px) {
+          font-size: 1.7rem;
+        }
 
         &#signUp {
           background-color: rgba(32, 32, 32, 0.6);

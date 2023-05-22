@@ -1,13 +1,14 @@
 import './welcome.scss';
+import { Link } from 'react-router-dom';
 
 function Welcome() {
   return (
     <div className='main__content__welcome'>
       <h2>Welcome To Cinemania</h2>
       <p>Your guide for a better experience</p>
-      <button className='main__content__welcome__btn' type='button'>
+      <Link className='main__content__welcome__btn' to='/home'>
         Discover More
-      </button>
+      </Link>
     </div>
   );
 }

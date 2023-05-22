@@ -22,6 +22,12 @@
     width: 50vw;
     padding: 2em;
     border-radius: 0.9em;
+
+    @media (width <= 500px) {
+      width: 80vw;
+      padding: 1.5em;
+    }
+
     form {
       display: flex;
       flex-direction: column;

@@ -15,13 +15,15 @@ function Navbar() {
   return (
     <nav className='header__navbar'>
       <div>
-        <h1>
-          C
-          <span>
-            <img src={logo} alt='brand / logo' />
-          </span>
-          nemania
-        </h1>
+        <Link to='/'>
+          <h1>
+            C
+            <span>
+              <img src={logo} alt='brand / logo' />
+            </span>
+            nemania
+          </h1>
+        </Link>
       </div>
 
       <ul className='header__navbar__navList'>
