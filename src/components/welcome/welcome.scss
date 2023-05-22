@@ -23,6 +23,11 @@
     font-size: 7rem;
     font-weight: 700;
     color: #ffd100;
+    padding: 0 0.4em;
+
+    @media (width <= 550px) {
+      font-size: 5.5rem;
+    }
   }
 
   p {

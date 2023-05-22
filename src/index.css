@@ -4,6 +4,18 @@
   font-size: 62.5%;
 }
 
+@media (width <= 992px) {
+  :root {
+    font-size: 50%;
+  }
+}
+
+@media (width <= 678px) {
+  :root {
+    font-size: 40%;
+  }
+}
+
 body {
   background: #202020;
 }

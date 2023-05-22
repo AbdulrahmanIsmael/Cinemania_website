@@ -1,0 +1,12 @@
+.main__content__home {
+  &__navLinks {
+    ul {
+      li {
+        a {
+          &.active {
+          }
+        }
+      }
+    }
+  }
+}
