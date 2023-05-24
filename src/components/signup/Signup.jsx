@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import './signup.scss';
 import ErrorInput from '../../helpers/ErrorInput';
 
@@ -10,6 +11,7 @@ const initialWrongInputs = {
 };
 
 function Signup() {
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: '',
     email: '',
@@ -54,7 +56,43 @@ function Signup() {
         return { ...prevErrors, password: true };
       });
 
-    /* Adding the user information to the redux store and then to the localStorage + moving to the sign in page, all of that happens just if all the checks is true*/
+    if (
+      checkUsernaveValidation &&
+      checkEmailValidation &&
+      checkPasswordValidation
+    ) {
+      localStorage.setItem('user', JSON.stringify(inputs));
+      navigate('/signin');
+    }
+  };
+
+  /* inputs Handlers */
+  const handleUsernameInput = e => {
+    setInputs(prevInputs => {
+      return { ...prevInputs, username: e.target.value };
+    });
+
+    setErrors(prevErrors => {
+      return { ...prevErrors, username: false };
+    });
+  };
+  const handleEmailInput = e => {
+    setInputs(prevInputs => {
+      return { ...prevInputs, email: e.target.value };
+    });
+
+    setErrors(prevErrors => {
+      return { ...prevErrors, email: false };
+    });
+  };
+  const handlePasswordInput = e => {
+    setInputs(prevInputs => {
+      return { ...prevInputs, password: e.target.value };
+    });
+
+    setErrors(prevErrors => {
+      return { ...prevErrors, password: false };
+    });
   };
 
   return (
@@ -67,15 +105,7 @@ function Signup() {
               type='text'
               name='username'
               value={inputs.username}
-              onChange={e => {
-                setInputs(prevInputs => {
-                  return { ...prevInputs, username: e.target.value };
-                });
-
-                setErrors(prevErrors => {
-                  return { ...prevErrors, username: false };
-                });
-              }}
+              onChange={handleUsernameInput}
               id='username'
               placeholder='Enter A Username'
             />
@@ -92,15 +122,7 @@ function Signup() {
               type='email'
               name='email'
               value={inputs.email}
-              onChange={e => {
-                setInputs(prevInputs => {
-                  return { ...prevInputs, email: e.target.value };
-                });
-
-                setErrors(prevErrors => {
-                  return { ...prevErrors, email: false };
-                });
-              }}
+              onChange={handleEmailInput}
               id='email'
               placeholder='Enter An Email'
             />
@@ -117,15 +139,7 @@ function Signup() {
               type='password'
               name='password'
               value={inputs.password}
-              onChange={e => {
-                setInputs(prevInputs => {
-                  return { ...prevInputs, password: e.target.value };
-                });
-
-                setErrors(prevErrors => {
-                  return { ...prevErrors, password: false };
-                });
-              }}
+              onChange={handlePasswordInput}
               id='password'
               placeholder='Enter A Password'
             />

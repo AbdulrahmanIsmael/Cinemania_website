@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Welcome from './components/welcome/Welcome';
@@ -6,6 +7,7 @@ import Signup from './components/signup/Signup';
 import Home from './components/home/Home';
 
 function App() {
+  const [isLogge, setIsLogged] = useState(false);
   return (
     <>
       <header className='header'>
@@ -15,7 +17,10 @@ function App() {
         <Routes>
           <Route path='/home' element={<Home />} />
           <Route path='/' element={<Welcome />} />
-          <Route path='/signin' element={<Signin />} />
+          <Route
+            path='/signin'
+            element={<Signin setIsLogged={setIsLogged} />}
+          />
           <Route path='/signup' element={<Signup />} />
         </Routes>
       </main>

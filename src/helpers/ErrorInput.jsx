@@ -5,7 +5,7 @@ export default function ErrorInput({ color, children }) {
         color,
         fontSize: '1.7rem',
         fontWeight: '600',
-        marginTop: '0.4em',
+        marginTop: '0.3em',
         width: '100%',
       }}
     >
