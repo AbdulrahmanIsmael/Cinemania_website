@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import ErrorInput from '../../helpers/ErrorInput';
+import ErrorInput from '../ErrorInput';
 import './signin.scss';
 
-function Signin({ setIsLogged }) {
+function Signin({ setIsLogged, setShowLoading }) {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
   const [inputs, setInputs] = useState({
@@ -28,7 +28,8 @@ function Signin({ setIsLogged }) {
       setError(true);
     } else {
       setIsLogged(true);
-      navigate('/home', { replace: true });
+      setShowLoading(true);
+      // navigate('/home', { replace: true });
     }
   };
 

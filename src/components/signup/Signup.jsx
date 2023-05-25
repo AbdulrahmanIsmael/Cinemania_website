@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import './signup.scss';
-import ErrorInput from '../../helpers/ErrorInput';
+import ErrorInput from '../ErrorInput';
 
 /* Defining the inital errors state value */
 const initialWrongInputs = {
