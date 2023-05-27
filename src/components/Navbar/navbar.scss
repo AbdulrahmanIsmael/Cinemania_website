@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-image: url(../../assets/images/nav-bg.png);
+  background-image: url('../../assets/images/nav-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -89,6 +89,44 @@
             background-color: rgba(32, 32, 32, 0.6);
             color: #ffee32;
           }
+        }
+      }
+
+      #logOut {
+        transition: all 0.25s linear;
+        font-family: 'Roboto Slab', serif;
+        padding: 0.3em 1.5em;
+        font-size: 2.3rem;
+        border-radius: 10px;
+        border: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(32, 32, 32, 0.6);
+        color: #ffee32;
+        border: 1px solid #ffee32;
+        font-weight: 700;
+
+        &:active {
+          background-color: #ffee32;
+          color: #202020;
+        }
+
+        @media (width <= 768px) {
+          font-size: 1.7rem;
+        }
+      }
+
+      h2 {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        font-size: 2rem;
+        color: #ffee32;
+
+        svg {
+          font-size: 4rem;
         }
       }
     }

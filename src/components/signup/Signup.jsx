@@ -12,6 +12,7 @@ const initialWrongInputs = {
 
 function Signup() {
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(false);
   const [inputs, setInputs] = useState({
     username: '',
     email: '',
@@ -21,6 +22,11 @@ function Signup() {
 
   const handleSignUp = e => {
     e.preventDefault();
+
+    if (!inputs.username && !inputs.email && !inputs.password) {
+      setErrorMsg(true);
+      return;
+    }
 
     /* Regex patterns */
     const usernameRegex = /(?<!\W)([A-Z]+|[a-z]{3,}|\d{2,})(?!\W)/g;
@@ -75,6 +81,8 @@ function Signup() {
     setErrors(prevErrors => {
       return { ...prevErrors, username: false };
     });
+
+    setErrorMsg(false);
   };
   const handleEmailInput = e => {
     setInputs(prevInputs => {
@@ -84,6 +92,8 @@ function Signup() {
     setErrors(prevErrors => {
       return { ...prevErrors, email: false };
     });
+
+    setErrorMsg(false);
   };
   const handlePasswordInput = e => {
     setInputs(prevInputs => {
@@ -93,6 +103,8 @@ function Signup() {
     setErrors(prevErrors => {
       return { ...prevErrors, password: false };
     });
+
+    setErrorMsg(false);
   };
 
   return (
@@ -100,6 +112,20 @@ function Signup() {
       <div className='main__content__signup_form'>
         <form onSubmit={handleSignUp}>
           <legend>Register</legend>
+          {errorMsg && (
+            <div
+              style={{
+                width: '100%',
+                textAlign: 'center',
+                marginTop: '-1.5em',
+              }}
+            >
+              <ErrorInput color='#FFD100'>
+                Please fill all the following information in order to make an
+                account!{' '}
+              </ErrorInput>
+            </div>
+          )}
           <div>
             <input
               type='text'

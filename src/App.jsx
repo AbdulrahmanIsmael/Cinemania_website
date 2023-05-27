@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useLoading } from './hooks/useLoading';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/navbar/Navbar';
 import Welcome from './components/welcome/Welcome';
 import Signin from './components/signin/Signin';
 import Signup from './components/signup/Signup';
@@ -21,7 +21,7 @@ function App() {
       ) : (
         <>
           <header className='header'>
-            <Navbar />
+            <Navbar isLogged={isLogged} setIsLogged={setIsLogged} />
           </header>
           <main className='main__content'>
             <Routes>

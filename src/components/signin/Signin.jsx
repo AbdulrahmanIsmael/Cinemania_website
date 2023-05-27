@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
 import ErrorInput from '../ErrorInput';
 import './signin.scss';
 
 function Signin({ setIsLogged, setShowLoading }) {
-  const navigate = useNavigate();
   const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -19,17 +18,20 @@ function Signin({ setIsLogged, setShowLoading }) {
       password: null,
     };
 
-    if (
+    if (!inputs.email && !inputs.password) {
+      setError(true);
+      setErrorMsg('Please fill the following inputs in order to sign in!');
+    } else if (
       !email ||
       !password ||
       inputs.email !== email ||
       inputs.password !== password
     ) {
       setError(true);
+      setErrorMsg('Invalid Email or Password!');
     } else {
       setIsLogged(true);
       setShowLoading(true);
-      // navigate('/home', { replace: true });
     }
   };
 
@@ -59,9 +61,7 @@ function Signin({ setIsLogged, setShowLoading }) {
                 marginTop: '-1.5em',
               }}
             >
-              <ErrorInput color='#FFD100'>
-                Invalid Email or Password!
-              </ErrorInput>
+              <ErrorInput color='#FFD100'>{errorMsg}</ErrorInput>
             </div>
           )}
 
