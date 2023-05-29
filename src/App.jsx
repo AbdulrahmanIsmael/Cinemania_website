@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useLoading } from './hooks/useLoading';
-import Navbar from './components/navbar/Nav.jsx';
+import Navbar from './components/navbar/Nav';
 import Welcome from './components/welcome/Welcome';
 import Signin from './components/signin/Signin';
 import Signup from './components/signup/Signup';
