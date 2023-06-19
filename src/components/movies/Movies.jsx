@@ -1,12 +1,10 @@
-import './home.scss';
-import { ImgNav } from './HomeCollection';
+import './movies.scss';
 import NavLinks from '../NavLinks/NavLinks';
 
 function Home() {
   return (
-    <div className='home'>
+    <div className='movies'>
       <NavLinks />
-      <ImgNav />
     </div>
   );
 }

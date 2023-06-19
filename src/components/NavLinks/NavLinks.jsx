@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import './navLinks.scss';
 
-function HomeNavLinks() {
+function NavLinks() {
   return (
-    <nav className='main__content__home__navLinks'>
+    <nav className='navLinks'>
       <ul>
         <li>
           <NavLink to='/home'>Home</NavLink>
@@ -21,4 +22,4 @@ function HomeNavLinks() {
   );
 }
 
-export default HomeNavLinks;
+export default NavLinks;

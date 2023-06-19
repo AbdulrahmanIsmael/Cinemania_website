@@ -6,6 +6,7 @@ import Welcome from './components/welcome/Welcome';
 import Signin from './components/signin/Signin';
 import Signup from './components/signup/Signup';
 import Home from './components/home/Home';
+import Movies from './components/movies/Movies';
 import Loading from './components/Loading';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <main className='main__content'>
             <Routes>
               <Route path='/home' element={<Home />} />
+              <Route path='/movies' element={<Movies />} />
               <Route path='/' element={<Welcome />} />
               <Route
                 path='/signin'
