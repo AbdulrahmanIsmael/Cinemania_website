@@ -17,6 +17,7 @@
 }
 
 body {
+  overflow-x: hidden;
   background: #202020;
   height: 100vh;
 }
@@ -59,4 +60,20 @@ button:focus {
 
 input:focus {
   outline: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  background-color: #202020;
+  width: 1.2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffd100;
+
+  border-radius: 3em;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #ffee32;
 }
