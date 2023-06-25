@@ -74,7 +74,7 @@
           border: 1px solid #ffee32;
           font-weight: 700;
 
-          &:active {
+          &:hover {
             background-color: #ffee32;
             color: #202020;
           }
@@ -85,7 +85,7 @@
           color: #202020;
           border: 1px solid #ffee32;
 
-          &:active {
+          &:hover {
             background-color: rgba(32, 32, 32, 0.6);
             color: #ffee32;
           }

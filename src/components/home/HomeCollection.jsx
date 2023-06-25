@@ -22,7 +22,11 @@ export function MoviesPosters({ scrollShowcase }) {
         '.home__showcase__postersList> li'
       ).offsetWidth;
 
-      scrollShowcase(moviesList, listItemWidth);
+      scrollShowcase(
+        moviesList,
+        listItemWidth,
+        moviesQuery.data.data.results.length
+      );
     }
   }, [moviesQuery, imageUrlQuery]);
 
@@ -82,7 +86,7 @@ export function MoviesPosters({ scrollShowcase }) {
   );
 }
 
-export function HomeCelebs() {
+export function TopCelebs() {
   const [celebsQuery, imageUrlQuery] = useFetchWithUrl(
     'celebs',
     'https://api.themoviedb.org/3/trending/person/day',
@@ -135,6 +139,81 @@ export function HomeCelebs() {
       >
         <ArrowBackIcon />
       </div>
+    </section>
+  );
+}
+
+export function AdSection() {
+  const [upcomingMoviesQuery, imageUrlQuery] = useFetchWithUrl(
+    'top',
+    'https://api.themoviedb.org/3/movie/top_rated',
+    { language: 'en-US', page: '1' }
+  );
+
+  useEffect(() => {
+    if (upcomingMoviesQuery.isSuccess) {
+      console.log(upcomingMoviesQuery.data.data.results[random]);
+    }
+  }, [upcomingMoviesQuery]);
+
+  const random = Math.trunc(Math.random() * 19);
+
+  return (
+    <section className='home__ad'>
+      {upcomingMoviesQuery.isSuccess && imageUrlQuery.isSuccess ? (
+        <div className='home__ad__topShow'>
+          <img
+            src={`${
+              imageUrlQuery.data.data.images.base_url
+            }${imageUrlQuery.data.data.images.poster_sizes.find(
+              size => size === 'original'
+            )}${upcomingMoviesQuery.data.data.results[random].poster_path}`}
+            alt={`${upcomingMoviesQuery.data.data.results[random].original_title} poster`}
+          />
+
+          <div className='home__ad__topShow__details'>
+            <h2>
+              {upcomingMoviesQuery.data.data.results[random].original_title}
+            </h2>
+            <p>{upcomingMoviesQuery.data.data.results[random].overview}</p>
+            <h3
+              style={{
+                color:
+                  upcomingMoviesQuery.data.data.results[random].vote_average < 5
+                    ? 'red'
+                    : upcomingMoviesQuery.data.data.results[random]
+                        .vote_average > 5 &&
+                      upcomingMoviesQuery.data.data.results[random]
+                        .vote_average < 8
+                    ? 'yellow'
+                    : 'green',
+              }}
+            >
+              {upcomingMoviesQuery.data.data.results[random].vote_average}
+            </h3>
+          </div>
+        </div>
+      ) : (
+        <img src={loading} alt='ad loading' />
+      )}
+    </section>
+  );
+}
+
+export function Subscribe() {
+  return (
+    <section className='home__sub'>
+      <h2>Subscribe for more news</h2>
+      <form>
+        <input type='email' name='email' id='email' />
+        <button
+          onClick={e => {
+            e.preventDefault();
+          }}
+        >
+          Subscribe
+        </button>
+      </form>
     </section>
   );
 }
