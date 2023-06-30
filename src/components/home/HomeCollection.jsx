@@ -7,6 +7,7 @@ import {
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import loading from '../../assets/images/data-loading.gif';
+import celebPerson from '../../assets/images/celeb.png';
 
 export function MoviesPosters({ scrollShowcase }) {
   const [moviesQuery, imageUrlQuery] = useFetchWithUrl(
@@ -123,6 +124,13 @@ export function TopCelebs() {
                   <h2>{celeb.name}</h2>
                 </li>
               );
+            } else {
+              return (
+                <li key={celeb.id} className='home__celebs__list__celeb'>
+                  <img src={celebPerson} alt={`${celeb.name} image`} />
+                  <h2>{celeb.name}</h2>
+                </li>
+              );
             }
           })
         )}
@@ -143,25 +151,19 @@ export function TopCelebs() {
   );
 }
 
-export function AdSection() {
+export function SpecialMovie() {
   const [upcomingMoviesQuery, imageUrlQuery] = useFetchWithUrl(
     'top',
     'https://api.themoviedb.org/3/movie/top_rated',
     { language: 'en-US', page: '1' }
   );
 
-  useEffect(() => {
-    if (upcomingMoviesQuery.isSuccess) {
-      console.log(upcomingMoviesQuery.data.data.results[random]);
-    }
-  }, [upcomingMoviesQuery]);
-
   const random = Math.trunc(Math.random() * 19);
 
   return (
-    <section className='home__ad'>
+    <section className='home__special'>
       {upcomingMoviesQuery.isSuccess && imageUrlQuery.isSuccess ? (
-        <div className='home__ad__topShow'>
+        <div className='home__special__topShow'>
           <img
             src={`${
               imageUrlQuery.data.data.images.base_url
@@ -171,7 +173,7 @@ export function AdSection() {
             alt={`${upcomingMoviesQuery.data.data.results[random].original_title} poster`}
           />
 
-          <div className='home__ad__topShow__details'>
+          <div className='home__special__topShow__details'>
             <h2>
               {upcomingMoviesQuery.data.data.results[random].original_title}
             </h2>
@@ -194,7 +196,7 @@ export function AdSection() {
           </div>
         </div>
       ) : (
-        <img src={loading} alt='ad loading' />
+        <img src={loading} alt='special movie loading' />
       )}
     </section>
   );

@@ -67,7 +67,10 @@ function Signup() {
       checkEmailValidation &&
       checkPasswordValidation
     ) {
-      localStorage.setItem('user', JSON.stringify(inputs));
+      localStorage.setItem(
+        'user',
+        JSON.stringify({ ...inputs, logged: false })
+      );
       navigate('/signin');
     }
   };

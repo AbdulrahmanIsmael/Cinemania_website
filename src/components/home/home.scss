@@ -154,7 +154,9 @@
     }
   }
 
-  &__ad {
+  &__special {
+    border-bottom: 2px solid #ffd100;
+
     > img {
       display: block;
       margin: 0 auto;
@@ -198,6 +200,7 @@
   }
 
   &__sub {
+    border-bottom: 2px solid #ffd100;
     background-color: #202020;
     display: flex;
     flex-direction: column;
@@ -217,6 +220,9 @@
       align-items: center;
       justify-content: center;
       input {
+        font-family: 'Roboto Slab', serif;
+        color: #202020;
+        width: 50vw;
         font-size: 3rem;
         padding: 0.3em;
         border: 0;
@@ -233,7 +239,8 @@
         color: #202020;
         font-family: 'Roboto Slab', serif;
         font-size: 2.85rem;
-        padding: 0.3em;
+        padding: 0.35em;
+        margin-left: 0.1em;
         border: 0;
 
         &:active {

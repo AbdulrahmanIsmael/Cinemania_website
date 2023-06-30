@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ErrorInput from '../ErrorInput';
 import './signin.scss';
 
-function Signin({ setIsLogged, setShowLoading }) {
+function Signin({ setShowLoading, setLogged }) {
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [inputs, setInputs] = useState({
@@ -30,8 +30,15 @@ function Signin({ setIsLogged, setShowLoading }) {
       setError(true);
       setErrorMsg('Invalid Email or Password!');
     } else {
-      setIsLogged(true);
+      const { username, email, password } = JSON.parse(
+        localStorage.getItem('user')
+      );
+      localStorage.setItem(
+        'user',
+        JSON.stringify({ username, email, password, logged: true })
+      );
       setShowLoading(true);
+      setLogged(true);
     }
   };
 

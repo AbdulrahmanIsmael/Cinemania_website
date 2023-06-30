@@ -8,7 +8,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-function Navbar({ isLogged, setIsLogged }) {
+function Navbar({ logged, setLogged }) {
   const navigate = useNavigate();
   const [mobUser, setMobUser] = useState(false);
 
@@ -17,8 +17,12 @@ function Navbar({ isLogged, setIsLogged }) {
   });
 
   const handleLogOut = () => {
-    localStorage.removeItem('user');
-    setIsLogged(false);
+    const userInStorage = JSON.parse(localStorage.getItem('user'));
+    localStorage.setItem(
+      'user',
+      JSON.stringify({ ...userInStorage, logged: false })
+    );
+    setLogged(false);
     navigate('/signup', { replace: true });
   };
 
@@ -37,7 +41,7 @@ function Navbar({ isLogged, setIsLogged }) {
       </div>
 
       <ul className='header__navbar__navList'>
-        {isLogged && JSON.parse(localStorage.getItem('user')).password ? (
+        {logged ? (
           <>
             <li className='header__navbar__navList__navItem'>
               <h2>

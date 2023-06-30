@@ -1,13 +1,17 @@
+import { useContext } from 'react';
 import './home.scss';
 import {
   MoviesPosters,
   TopCelebs,
-  AdSection,
+  SpecialMovie,
   Subscribe,
 } from './HomeCollection';
 import NavLinks from '../NavLinks/NavLinks';
+import { loggedContext } from '../../App';
 
 function Home() {
+  const logged = useContext(loggedContext);
+
   function scrollShowcase(list, item, num) {
     const intervalScroll = setInterval(() => {
       list.scrollBy({
@@ -23,10 +27,10 @@ function Home() {
 
   return (
     <div className='home'>
-      <NavLinks />
+      <NavLinks logged={logged} />
       <MoviesPosters scrollShowcase={scrollShowcase} />
       <TopCelebs />
-      <AdSection />
+      <SpecialMovie />
       <Subscribe />
     </div>
   );
