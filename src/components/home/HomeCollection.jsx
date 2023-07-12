@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useFetchWithUrl } from '../../hooks/useFetchWithUrl';
 import {
   handleScrollLeft,
@@ -9,36 +8,46 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import loading from '../../assets/images/data-loading.gif';
 import celebPerson from '../../assets/images/celeb.png';
 
-export function MoviesPosters({ scrollShowcase }) {
+export function MoviesPosters() {
   const [moviesQuery, imageUrlQuery] = useFetchWithUrl(
     'popular',
     'https://api.themoviedb.org/3/movie/popular',
-    { language: 'en-US', page: 1 }
+    { language: 'en-US', page: String(Math.trunc(Math.random() * 100 + 1)) }
   );
 
-  useEffect(() => {
-    if (moviesQuery.isSuccess && imageUrlQuery.isSuccess) {
-      const moviesList = document.querySelector('.home__showcase__postersList');
-      const listItemWidth = document.querySelector(
-        '.home__showcase__postersList> li'
-      ).offsetWidth;
+  function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+      let context = this,
+        args = arguments;
+      let later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      let callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
 
-      scrollShowcase(
-        moviesList,
-        listItemWidth,
-        moviesQuery.data.data.results.length
-      );
-    }
-  }, [moviesQuery, imageUrlQuery]);
-
-  function handleScroll(scrollInDir) {
+  const scrollLeft = debounce(function () {
     const moviesList = document.querySelector('.home__showcase__postersList');
     const listItemWidth = document.querySelector(
       '.home__showcase__postersList> li'
     ).offsetWidth;
 
-    scrollInDir(moviesList, listItemWidth);
-  }
+    handleScrollLeft(moviesList, listItemWidth);
+  }, 300);
+
+  const scrollRight = debounce(function () {
+    const moviesList = document.querySelector('.home__showcase__postersList');
+    const listItemWidth = document.querySelector(
+      '.home__showcase__postersList> li'
+    ).offsetWidth;
+
+    handleScrollRight(moviesList, listItemWidth);
+  }, 300);
 
   return (
     <section className='home__showcase'>
@@ -61,6 +70,7 @@ export function MoviesPosters({ scrollShowcase }) {
                   )}${movie.poster_path}
                   `}
                   alt={`${movie.original_title} poster`}
+                  loading='lazy'
                 />
                 <div id='home__showcase__postersList__poster__details'>
                   <h2>{movie.original_title}</h2>
@@ -71,16 +81,10 @@ export function MoviesPosters({ scrollShowcase }) {
           })
         )}
       </ul>
-      <div
-        className='home__showcase__rightRow'
-        onClick={() => handleScroll(handleScrollRight)}
-      >
+      <div className='home__showcase__rightRow' onClick={() => scrollRight()}>
         <ArrowForwardIcon />
       </div>
-      <div
-        className='home__showcase__leftRow'
-        onClick={() => handleScroll(handleScrollLeft)}
-      >
+      <div className='home__showcase__leftRow' onClick={() => scrollLeft()}>
         <ArrowBackIcon />
       </div>
     </section>
@@ -109,14 +113,14 @@ export function TopCelebs() {
         {celebsQuery.isLoading ? (
           <img src={loading} alt='celebs loading' />
         ) : (
-          celebsQuery.data.data.results.map(celeb => {
+          celebsQuery?.data?.data?.results.map(celeb => {
             if (celeb.profile_path) {
               return (
                 <li key={celeb.id} className='home__celebs__list__celeb'>
                   <img
                     src={`${
-                      imageUrlQuery.data.data.images.base_url
-                    }${imageUrlQuery.data.data.images.profile_sizes.find(
+                      imageUrlQuery?.data?.data?.images?.base_url
+                    }${imageUrlQuery?.data?.data?.images?.profile_sizes.find(
                       size => size === 'w185'
                     )}${celeb.profile_path}`}
                     alt={`${celeb.name} image`}
@@ -127,7 +131,13 @@ export function TopCelebs() {
             } else {
               return (
                 <li key={celeb.id} className='home__celebs__list__celeb'>
-                  <img src={celebPerson} alt={`${celeb.name} image`} />
+                  <img
+                    src={celebPerson}
+                    alt={`${celeb.name} image`}
+                    style={{
+                      maxWidth: '15vw',
+                    }}
+                  />
                   <h2>{celeb.name}</h2>
                 </li>
               );
@@ -155,7 +165,7 @@ export function SpecialMovie() {
   const [upcomingMoviesQuery, imageUrlQuery] = useFetchWithUrl(
     'top',
     'https://api.themoviedb.org/3/movie/top_rated',
-    { language: 'en-US', page: '1' }
+    { language: 'en-US', page: String(Math.trunc(Math.random() * 100 + 1)) }
   );
 
   const random = Math.trunc(Math.random() * 19);
@@ -166,32 +176,33 @@ export function SpecialMovie() {
         <div className='home__special__topShow'>
           <img
             src={`${
-              imageUrlQuery.data.data.images.base_url
-            }${imageUrlQuery.data.data.images.poster_sizes.find(
+              imageUrlQuery?.data?.data?.images?.base_url
+            }${imageUrlQuery?.data?.data?.images?.poster_sizes.find(
               size => size === 'original'
-            )}${upcomingMoviesQuery.data.data.results[random].poster_path}`}
-            alt={`${upcomingMoviesQuery.data.data.results[random].original_title} poster`}
+            )}${upcomingMoviesQuery?.data?.data?.results[random]?.poster_path}`}
+            alt={`${upcomingMoviesQuery?.data?.data?.results[random]?.original_title} poster`}
           />
 
           <div className='home__special__topShow__details'>
             <h2>
-              {upcomingMoviesQuery.data.data.results[random].original_title}
+              {upcomingMoviesQuery?.data?.data?.results[random]?.original_title}
             </h2>
-            <p>{upcomingMoviesQuery.data.data.results[random].overview}</p>
+            <p>{upcomingMoviesQuery?.data?.data?.results[random]?.overview}</p>
             <h3
               style={{
                 color:
-                  upcomingMoviesQuery.data.data.results[random].vote_average < 5
+                  upcomingMoviesQuery?.data?.data?.results[random]
+                    ?.vote_average < 5
                     ? 'red'
-                    : upcomingMoviesQuery.data.data.results[random]
+                    : upcomingMoviesQuery?.data?.data?.results[random]
                         .vote_average > 5 &&
-                      upcomingMoviesQuery.data.data.results[random]
-                        .vote_average < 8
+                      upcomingMoviesQuery?.data?.data?.results[random]
+                        ?.vote_average < 8
                     ? 'yellow'
                     : 'green',
               }}
             >
-              {upcomingMoviesQuery.data.data.results[random].vote_average}
+              {upcomingMoviesQuery?.data?.data?.results[random]?.vote_average}
             </h3>
           </div>
         </div>

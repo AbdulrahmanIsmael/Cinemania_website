@@ -7,9 +7,9 @@ import { loggedContext } from '../../App';
 function Home() {
   const logged = useContext(loggedContext);
   const [filteredOptions, setFilteredOptions] = useState({
-    sort: 'popular',
-    rating: [],
-    decade: [],
+    sort: null,
+    rating: '0',
+    years: [],
   });
 
   return (
