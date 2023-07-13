@@ -4,7 +4,7 @@ Discover a seamless movie and TV series experience on our website. Built with Re
 
 # My Pre-Planning of The Project
 
-![plan](./Cinemania%20Project.png)
+![plan](./Cinemania%20Plan.png)
 
 # Features
 
