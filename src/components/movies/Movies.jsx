@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-import './movies.scss';
-import NavLinks from '../NavLinks/NavLinks';
-import { FilterSystem, MoviesList } from './MoviesCollection';
 import { loggedContext } from '../../App';
+import '../shows/shows.scss';
+import NavLinks from '../NavLinks/NavLinks';
+import { FilterSystem, ShowsList } from '../shows/showsCollection';
 
 function Home() {
   const logged = useContext(loggedContext);
@@ -13,14 +13,39 @@ function Home() {
   });
 
   return (
-    <div className='movies'>
+    <section className='shows'>
       <NavLinks logged={logged} />
+      <h1>Movies</h1>
       <FilterSystem
-        section={'movies'}
         setFilteredOptions={setFilteredOptions}
+        sort={{
+          popular: {
+            value: 'popular',
+            label: 'Popular',
+          },
+
+          newest: {
+            value: 'now_playing',
+            label: 'Now Playing',
+          },
+
+          topRated: {
+            value: 'top_rated',
+            label: 'Top Rated',
+          },
+
+          upcoming: {
+            value: 'upcoming',
+            label: 'Upcoming',
+          },
+        }}
       />
-      <MoviesList filteredOptions={filteredOptions} />
-    </div>
+      <ShowsList
+        filteredOptions={filteredOptions}
+        showType={'movies'}
+        dataType={'movie'}
+      />
+    </section>
   );
 }
 

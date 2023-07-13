@@ -1,6 +1,6 @@
-# Cinemania (Not Completed)
+# Cinemania
 
-Discover a seamless movie and TV series experience on our website. Built with React and optimized tools, **_ stay up-to-date with the latest releases and immerse yourself in the world of cinema _**. Enjoy responsive design for effortless browsing on any device.
+Discover a seamless movie and TV series experience on our website. Built with React and optimized tools, **_ stay up-to-date with the latest releases and immerse yourself in the world of cinema _**. Enjoy responsive user interface for effortless browsing on any device.
 
 # My Pre-Planning of The Project
 
@@ -13,15 +13,40 @@ Cinemania comes with a wide range of powerful features that will serve movies fa
 - Keeping Up to date with hollywood movies.
 - Exploring the best shows and the best actors
 - Easy-to-use website with flexible transitions and enjoyable usage
+- Filtering shows on your own choices
+- Subscribing to get the latest news about the cinema world
 
 ## Tools
 
 - React
 - React Router
-- Redux toolkit (React-Redux)
 - React Query
 - Sass (CSS)
 - JavaScript
+- material ui icons
+
+## Screenshots
+
+Cinemania
+![welcome](./screenshots/cinemania.png)
+
+Sign In
+![signIn](./screenshots/sign%20in.png)
+
+Register
+![register](./screenshots/register.png)
+
+Home
+![home](./screenshots/home.png)
+
+Movies
+![movies](./screenshots/movies.png)
+
+Series
+![series](./screenshots/series.png)
+
+About
+![About](./screenshots/about.png)
 
 ---
 

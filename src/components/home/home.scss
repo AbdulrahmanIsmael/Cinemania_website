@@ -79,7 +79,7 @@
 
   &__celebs {
     position: relative;
-    padding: 2.5em 0.7em;
+    padding: 2.5em 0;
     border-bottom: 2px solid #ffd100;
 
     h2 {
@@ -93,10 +93,10 @@
 
     &__list {
       overflow: hidden;
-      padding: 0 10em;
+      padding: 0 5em;
       display: flex;
-      gap: 2.5em;
-      justify-content: center;
+      gap: 0.8em;
+      justify-content: flex-start;
       align-items: center;
       &__celeb {
         cursor: pointer;
@@ -147,10 +147,10 @@
     }
 
     &__rightRow {
-      right: 0;
+      right: 0.5%;
     }
     &__leftRow {
-      left: 0;
+      left: 0.5%;
     }
   }
 
@@ -181,7 +181,7 @@
           font-size: 6rem;
           color: #202020;
           font-family: 'Roboto Slab', serif;
-          margin-bottom: 1em;
+          margin-bottom: 0.8em;
         }
 
         p {
@@ -194,6 +194,9 @@
         h3 {
           font-family: 'Roboto Slab', serif;
           font-size: 5rem;
+          color: #eee;
+          padding: 0.2em;
+          border-radius: 0.3em;
         }
       }
     }
@@ -206,7 +209,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3em 1em;
+    padding: 5em 1em;
 
     h2 {
       font-size: 6rem;
@@ -239,9 +242,9 @@
         color: #202020;
         font-family: 'Roboto Slab', serif;
         font-size: 2.85rem;
-        padding: 0.35em;
+        padding: 0.323em 0.35em;
         margin-left: 0.1em;
-        border: 0;
+        border: 1px solid #ffd100;
 
         &:active {
           background: #202020;

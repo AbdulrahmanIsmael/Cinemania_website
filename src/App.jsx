@@ -8,6 +8,8 @@ import Signup from './components/signup/Signup';
 import Home from './components/home/Home';
 import Movies from './components/movies/Movies';
 import Series from './components/series/Series';
+import About from './components/about/About';
+import Footer from './components/footer/Footer';
 import Loading from './components/Loading';
 
 export const loggedContext = createContext(null);
@@ -35,6 +37,7 @@ function App() {
                 <Route path='/home' element={<Home />} />
                 <Route path='/movies' element={<Movies />} />
                 <Route path='/series' element={<Series />} />
+                <Route path='/about' element={<About />} />
                 <Route path='/' element={<Welcome />} />
                 <Route
                   path='/signin'
@@ -51,6 +54,7 @@ function App() {
           </>
         )}
       </loggedContext.Provider>
+      <Footer currentYear={new Date().getFullYear()} />
     </>
   );
 }

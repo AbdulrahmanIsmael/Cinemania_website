@@ -1,0 +1,29 @@
+.footer {
+  &__media {
+    background-color: #ffd100;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10em;
+    padding: 2em 1em;
+
+    svg {
+      cursor: pointer;
+      transition: opacity 0.2s linear;
+      font-size: 4rem;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  p {
+    padding: 0.9em 0.3em;
+    text-align: center;
+    color: #ffd100;
+    font-size: 2rem;
+    font-family: 'Roboto Slab', serif;
+  }
+}

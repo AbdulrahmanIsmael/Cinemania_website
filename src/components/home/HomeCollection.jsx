@@ -38,7 +38,7 @@ export function MoviesPosters() {
     ).offsetWidth;
 
     handleScrollLeft(moviesList, listItemWidth);
-  }, 300);
+  }, 280);
 
   const scrollRight = debounce(function () {
     const moviesList = document.querySelector('.home__showcase__postersList');
@@ -47,7 +47,7 @@ export function MoviesPosters() {
     ).offsetWidth;
 
     handleScrollRight(moviesList, listItemWidth);
-  }, 300);
+  }, 280);
 
   return (
     <section className='home__showcase'>
@@ -190,7 +190,7 @@ export function SpecialMovie() {
             <p>{upcomingMoviesQuery?.data?.data?.results[random]?.overview}</p>
             <h3
               style={{
-                color:
+                backgroundColor:
                   upcomingMoviesQuery?.data?.data?.results[random]
                     ?.vote_average < 5
                     ? 'red'
@@ -202,7 +202,9 @@ export function SpecialMovie() {
                     : 'green',
               }}
             >
-              {upcomingMoviesQuery?.data?.data?.results[random]?.vote_average}
+              {upcomingMoviesQuery?.data?.data?.results[
+                random
+              ]?.vote_average.toFixed(1)}
             </h3>
           </div>
         </div>
