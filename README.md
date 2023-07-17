@@ -1,6 +1,6 @@
 # Cinemania
 
-Discover a seamless movie and TV series experience on our website. Built with React and optimized tools, **_ stay up-to-date with the latest releases and immerse yourself in the world of cinema _**. Enjoy responsive user interface for effortless browsing on any device.
+Discover a seamless movie and TV series experience on our website. Built with React and optimized tools, **stay up-to-date with the latest releases and immerse yourself in the world of cinema**. Enjoy a responsive user interface for effortless browsing on any device.
 
 # My Pre-Planning of The Project
 
