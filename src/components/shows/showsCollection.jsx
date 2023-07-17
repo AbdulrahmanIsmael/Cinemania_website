@@ -172,6 +172,9 @@ export function ShowsList({ filteredOptions, showType, dataType }) {
     },
     {
       enabled: !!filteredOptions.sort,
+      staleTime: 1000 * 60 * 5,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
     }
   );
 
@@ -204,29 +207,42 @@ export function ShowsList({ filteredOptions, showType, dataType }) {
         console.log(error);
       }
     },
-    { enabled: !!searchValue }
+    {
+      enabled: !!searchValue,
+      staleTime: 1000 * 60 * 5,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+    }
   );
 
-  const imageUrlQuery = useQuery(['imageUrl'], async () => {
-    const options = {
-      method: 'GET',
-      url: 'https://api.themoviedb.org/3/configuration',
-      params: {},
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODM2NGE4MmUyZjkxYTY4MjE4OWI4ZDdlOGZjZmI2MiIsInN1YiI6IjYzN2Y2ODFkYTRhZjhmMDA4NjYwZWY0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CynOdUPMA1SB8ABorsBdqCcqfU_CSB_uJehd2N3jsc8',
-      },
-    };
+  const imageUrlQuery = useQuery(
+    ['imageUrl'],
+    async () => {
+      const options = {
+        method: 'GET',
+        url: 'https://api.themoviedb.org/3/configuration',
+        params: {},
+        headers: {
+          accept: 'application/json',
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODM2NGE4MmUyZjkxYTY4MjE4OWI4ZDdlOGZjZmI2MiIsInN1YiI6IjYzN2Y2ODFkYTRhZjhmMDA4NjYwZWY0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CynOdUPMA1SB8ABorsBdqCcqfU_CSB_uJehd2N3jsc8',
+        },
+      };
 
-    const res = await axios.request(options);
+      const res = await axios.request(options);
 
-    try {
-      return res;
-    } catch (err) {
-      console.log(err);
+      try {
+        return res;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    {
+      staleTime: Infinity,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
     }
-  });
+  );
 
   return (
     <section className='shows__list'>

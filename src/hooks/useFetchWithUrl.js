@@ -18,6 +18,9 @@ export function useFetchWithUrl(query, endpoint, parameters) {
         };
         return axios.request(options);
       },
+      staleTime: 1000 * 60 * 3,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
     },
     {
       queryKey: ['imagesUrl'],
@@ -34,6 +37,9 @@ export function useFetchWithUrl(query, endpoint, parameters) {
         };
         return axios.request(options);
       },
+      staleTime: Infinity,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
     },
   ]);
 
