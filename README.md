@@ -8,12 +8,12 @@ Discover a seamless movie and TV series experience on our website. Built with Re
 
 # Features
 
-Cinemania comes with a wide range of powerful features that will serve movies fans. Some of the notable features include:
+Cinemania comes with a wide range of powerful features that will serve cinema fans. Some of the notable features include:
 
-- Keeping Up to date with hollywood movies.
+- Keeping Up to date with Hollywood movies.
 - Exploring the best shows and the best actors
 - Easy-to-use website with flexible transitions and enjoyable usage
-- Filtering shows on your own choices
+- Filtering shows based on your own choices
 - Subscribing to get the latest news about the cinema world
 
 ## Tools
@@ -56,8 +56,8 @@ Junior Front-end developer with a history of creating engaging, user-friendly we
 
 ## 🛠 Skills
 
-- HTML - HTML5
-- CSS - CSS3
+- HTML/HTML5
+- CSS/CSS3
 - JavaScript
 - Object Oriented Programming (OOP)
 - Sass\SCSS
